@@ -22,17 +22,17 @@ def run():
     config = reload_config(config.FLAGS)
 
     # Add timestamp to log path
-    config.log_dir = os.path.join(config.log_dir, '%s' % config.run_name)
+    config.log_direc = os.path.join(config.log_direc, '%s' % config.run_name)
 
     # Add model name to log path
-    config.log_dir = config.log_dir + '_kvae'
+    config.log_direc = config.log_direc + '_kvae'
 
     # Create log path
-    if not os.path.isdir(config.log_dir):
-        os.makedirs(config.log_dir)
+    if not os.path.isdir(config.log_direc):
+        os.makedirs(config.log_direc)
 
     # Save hyperparameters
-    with open(config.log_dir + '/config.json', 'w') as f:
+    with open(config.log_direc + '/config.json', 'w') as f:
         json.dump(config.__flags, f)
 
     # Set GPU

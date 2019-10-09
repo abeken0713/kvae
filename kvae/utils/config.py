@@ -11,7 +11,7 @@ def reload_config(FLAGS):
             config_dict = json.load(data_file)
 
         for key, value in config_dict.items():
-            attr_remove = ['gpu', 'run_name', 'log_dir', 'n_steps_gen', 'reload_model', 'display_step', 'generate_step']
+            attr_remove = ['gpu', 'run_name', 'log_direc', 'n_steps_gen', 'reload_model', 'display_step', 'generate_step']
             # attr_remove = ['gpu', 'n_steps_gen', 'reload_model', 'display_step', 'generate_step']
             if key not in attr_remove:
                 FLAGS.__setattr__(key, value)
@@ -74,7 +74,7 @@ def get_image_config():
 
     # Logs/plotting config
     cl.DEFINE_string('run_name', time.strftime('%Y%m%d%H%M%S', time.localtime()), 'Name for the run')
-    cl.DEFINE_string('log_dir', 'logs', 'Directory to save files in')
+    cl.DEFINE_string('log_direc', 'logs', 'Directory to save files in')
     cl.DEFINE_integer('display_step', 1, 'After how many epochs to print logs')
     cl.DEFINE_integer('generate_step', 20, 'After how many epochs to store the plots')
     cl.DEFINE_integer('n_steps_gen', 80, 'Number of steps to generate in a sequence')
