@@ -32,8 +32,8 @@ def run():
         os.makedirs(config.log_direc)
 
     # Save hyperparameters
-    with open(config.log_direc + '/config.json', 'w') as f:
-        json.dump(config.__flags, f)
+    # with open(config.log_direc + '/config.json', 'w') as f:
+    #     json.dump(config.__flags, f)
 
     # Set GPU
     os.environ['CUDA_VISIBLE_DEVICES'] = config.gpu
