@@ -69,6 +69,4 @@ data/
 examples/logs/
 kvae/utils/training_sequence.mp4
 
-notebooks/
-
 **.zip
