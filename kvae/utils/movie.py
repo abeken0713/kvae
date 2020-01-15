@@ -59,9 +59,9 @@ def save_true_generated_frames(true, generated, filename):
     ani = animation.FuncAnimation(fig, updatefig, interval=500, frames=n_steps)
 
     try:
-        writer = animation.writers['avconv']
-    except KeyError:
         writer = animation.writers['ffmpeg']
+    except KeyError:
+        writer = animation.writers['avconv']
     writer = writer(fps=3)
     ani.save(filename, writer=writer)
     plt.close(fig)

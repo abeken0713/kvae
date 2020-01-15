@@ -111,7 +111,7 @@ def plot_ball_trajectory(var, filename, idx=0, scale=30, cmap='Blues'):
     ax.add_collection(collection)
     ax.set_xticks([])
     ax.set_yticks([])
-    ax.axis("equal")
+    ax.set_aspect("equal")
     ax.set_xlabel('$a_{t,1}$', fontsize=24)
     ax.set_ylabel('$a_{t,2}$', fontsize=24)
 
@@ -135,7 +135,7 @@ def plot_ball_trajectories(all_vars, filename, table_size=4, scale=30):
     fig, axes = plt.subplots(table_size, table_size, sharex=True, sharey=True, figsize=[12, 12])
     for idx, ax in enumerate(axes.flat):
         collection = construct_ball_trajectory(all_vars[idx], r=r)
-        ax.axis("equal")
+        ax.set_aspect("equal")
         ax.add_collection(collection)
 
     plt.savefig(filename, format='png', bbox_inches='tight', dpi=80)
@@ -179,7 +179,7 @@ def plot_ball_trajectories_comparison(enc, gen, impute, filename, idx=0, scale=6
 
         ax.set_xticks([])
         ax.set_yticks([])
-        ax.axis("equal")
+        ax.set_aspect("equal")
 
         if i >= ncols*(nrows - 1):
             ax.set_xlabel('$a_{t,1}$', fontsize=30)
