@@ -7,7 +7,7 @@ class PymunkData(object):
     """
     def __init__(self, file_path, config):
         # Load data
-        npzfile = np.load(file_path)
+        npzfile = np.load(file_path, allow_pickle=True)
         self.images = npzfile['images'].astype(np.float32)
         if config.out_distr == 'bernoulli':
             self.images = (self.images > 0).astype('float32')
@@ -17,6 +17,17 @@ class PymunkData(object):
             # Only load the position, not velocity
             self.state = npzfile['state'].astype(np.float32)[:, :, :2]
             self.velocity = npzfile['state'].astype(np.float32)[:, :, 2:]
+
+            # Normalize the mean
+            self.state = self.state - self.state.mean(axis=(0, 1))
+
+            # Set state dimension
+            self.state_dim = self.state.shape[-1]
+
+        if 'states' in npzfile:
+            # Only load the position, not velocity
+            self.state = npzfile['states'].astype(np.float32)[:, :, :2]
+            self.velocity = npzfile['states'].astype(np.float32)[:, :, 2:]
 
             # Normalize the mean
             self.state = self.state - self.state.mean(axis=(0, 1))
