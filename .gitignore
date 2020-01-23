@@ -71,3 +71,6 @@ examples/logs/
 kvae/utils/training_sequence.mp4
 
 **.zip
+*.mp4
+*.npy
+*.npz
